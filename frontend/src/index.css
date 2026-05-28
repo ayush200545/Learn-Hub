@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 262.1 83.3% 95%;
+    --accent-foreground: 262.1 83.3% 30%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 228 18% 5%; /* #0B0C10 */
+    --foreground: 0 0% 100%;
+    --card: 234 21% 10%; /* #14151F */
+    --card-foreground: 0 0% 100%;
+    --popover: 234 21% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 271 76% 53%; /* #8A2BE2 neon purple */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 19% 15%; /* #1E1E2C */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 19% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 271 76% 15%;
+    --accent-foreground: 271 76% 80%;
+    --border: 240 19% 15%;
+    --input: 240 19% 15%;
+    --ring: 271 76% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary overflow-x-hidden;
+  }
+}
+
+/* Glassmorphism & High-Level styling */
+.glass-panel {
+  @apply bg-white/70 dark:bg-black/40 backdrop-blur-3xl border border-white/20 dark:border-white/5;
+}
+
+.glass-card {
+  @apply bg-white/60 dark:bg-black/60 backdrop-blur-2xl border border-zinc-200/50 dark:border-white/10;
+}
+
+.glass-nav {
+  @apply sticky top-0 z-50 bg-white/70 dark:bg-black/60 backdrop-blur-2xl border-b border-zinc-200/50 dark:border-white/10;
+}
+
+/* Animated Film Grain Overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Razorpay Infinite Loading Slider Keyframe */
+@keyframes infinite-loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-infinite-loading {
+  animation: infinite-loading 1.2s infinite linear;
+}
